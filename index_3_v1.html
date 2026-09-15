@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConServ Misr | Premium Corporate Solutions</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <style>
+    :root {
+      --primary-green: #3FA64A;
+      --primary-lime: #C9D91A;
+      --brand-gradient: linear-gradient(135deg, #3FA64A 0%, #C9D91A 100%);
+      --secondary-green: #35A645;
+      --white: #FAFAFA;
+      --black: #000000;
+      --text-dark: #121518;
+      --background-soft: #F4F6F9; /* Adjusted for a slightly cooler corporate feel */
+    }
+    
+    /* Preloader */
+    .fade-out {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
+
+    /* Awaiken Style Hover Card */
+    .corporate-card {
+      transition: all 0.4s ease;
+    }
+    .corporate-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    }
+    .corporate-card .icon-box {
+      transition: all 0.4s ease;
+    }
+    .corporate-card:hover .icon-box {
+      background-color: var(--primary-green);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    /* Custom Navbar Scroll Transition */
+    #navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    /* Decorative Circle Text Animation */
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    .spin-slow {
+      animation: spin 15s linear infinite;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3FA64A',
+            lime: '#C9D91A',
+            secondary: '#35A645',
+            soft: '#F4F6F9',
+            dark: '#121518',
+            graytext: '#5A6067'
+          },
+          backgroundImage: {
+            'brand-gradient': 'linear-gradient(135deg, #3FA64A 0%, #C9D91A 100%)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-graytext antialiased">
+
+  <div id="preloader" class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center">
+    <div class="relative w-16 h-16">
+      <div class="absolute inset-0 rounded-full border-4 border-gray-100"></div>
+      <div class="absolute inset-0 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
+    </div>
+  </div>
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 w-full transition-all duration-300 py-5">
+    <nav class="relative max-w-[85rem] w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between" aria-label="Global">
+      
+      <a class="flex-none" href="#" aria-label="ConServ Misr">
+        <img src="./logo_white.png" alt="ConServ Misr Logo" class="h-9 w-auto object-contain transition-all duration-300" id="nav-logo" onerror="this.outerHTML='<span class=\'text-2xl font-bold font-heading text-white\'>ConServ</span>'">
+      </a>
+
+      <div class="hidden md:flex items-center gap-x-8">
+        <a class="font-heading font-medium text-white hover:text-primary transition nav-link" href="#" aria-current="page">Home</a>
+        <a class="font-heading font-medium text-white hover:text-primary transition nav-link" href="#about">About Us</a>
+        <a class="font-heading font-medium text-white hover:text-primary transition nav-link" href="#services">Solutions</a>
+        <a class="font-heading font-medium text-white hover:text-primary transition nav-link" href="#vendors">Partners</a>
+      </div>
+
+      <div class="hidden md:block">
+        <a class="inline-flex justify-center items-center gap-x-2 py-3 px-6 bg-primary hover:bg-dark text-white font-heading font-medium text-sm rounded-full transition-colors" href="#footer">
+          Get Started
+          <i data-lucide="arrow-right" class="size-4"></i>
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button type="button" class="hs-collapse-toggle size-9 flex justify-center items-center rounded-lg border border-white/20 text-white" id="mobile-toggle" data-hs-collapse="#navbar-collapse">
+          <i data-lucide="menu" class="size-5 nav-icon"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <div class="relative w-full h-[95vh] flex items-center justify-center overflow-hidden bg-dark">
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-60">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    
+    <div class="relative z-10 max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
+      <span data-aos="fade-up" class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-heading text-sm mb-6">
+        <span class="size-2 rounded-full bg-lime animate-pulse"></span> Corporate IT & Consulting
+      </span>
+      
+      <h1 data-aos="fade-up" data-aos-delay="100" class="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-6">
+        Empowering excellence <br> through <span class="text-transparent bg-clip-text bg-brand-gradient">technology</span>
+      </h1>
+      
+      <p data-aos="fade-up" data-aos-delay="200" class="max-w-2xl mx-auto text-lg text-gray-300 mb-10 leading-relaxed">
+        Discover transformative IT solutions that drive growth and efficiency. Our expert team provides tailored software strategies to help your business integrate seamlessly with the digital ecosystem.
+      </p>
+      
+      <div data-aos="fade-up" data-aos-delay="300" class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#services" class="py-4 px-8 bg-primary hover:bg-white hover:text-dark text-white font-heading font-medium rounded-full transition-all shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
+          Explore Services <i data-lucide="arrow-right" class="size-4"></i>
+        </a>
+        <a class="ekit-video-popup py-4 px-8 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 rounded-full font-heading font-medium transition-all flex items-center justify-center gap-2 cursor-pointer">
+          <div class="size-6 bg-white text-dark rounded-full flex items-center justify-center"><i data-lucide="play" class="size-3 ml-0.5"></i></div>
+          Watch Video
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="relative z-20 max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 -mt-12 mb-20 hidden lg:block">
+    <div class="bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] border border-gray-100 p-6 flex justify-between items-center">
+      
+      <div class="flex items-center gap-4 px-6 border-r border-gray-100 flex-1">
+        <div class="size-12 bg-soft text-primary rounded-full flex items-center justify-center"><i data-lucide="mail" class="size-5"></i></div>
+        <div>
+          <p class="text-sm text-gray-500 mb-0.5">Email Us</p>
+          <p class="font-heading font-semibold text-dark">info@conservmisr.com</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 px-6 border-r border-gray-100 flex-1">
+        <div class="size-12 bg-soft text-primary rounded-full flex items-center justify-center"><i data-lucide="phone" class="size-5"></i></div>
+        <div>
+          <p class="text-sm text-gray-500 mb-0.5">Call Us</p>
+          <p class="font-heading font-semibold text-dark">+0222903729</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 px-6 flex-1">
+        <div class="size-12 bg-soft text-primary rounded-full flex items-center justify-center"><i data-lucide="map-pin" class="size-5"></i></div>
+        <div>
+          <p class="text-sm text-gray-500 mb-0.5">Location</p>
+          <p class="font-heading font-semibold text-dark text-sm">Hassan Aflaton St, Heliopolis</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="about" class="py-20 bg-white overflow-hidden lg:pt-10">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        
+        <div class="relative" data-aos="fade-right">
+          <div class="grid grid-cols-2 gap-6 relative z-10">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop" class="rounded-[2rem] w-full h-80 object-cover mt-12 shadow-xl" alt="IT Consulting">
+            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop" class="rounded-[2rem] w-full h-80 object-cover shadow-xl" alt="Team Work">
+          </div>
+          
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-2xl flex items-center justify-center size-36">
+            <div class="absolute inset-2 border border-dashed border-gray-300 rounded-full spin-slow"></div>
+            <div class="size-20 bg-primary text-white rounded-full flex items-center justify-center z-10 shadow-inner">
+              <span class="font-heading font-bold text-2xl">7+</span>
+            </div>
+            <svg class="absolute inset-0 w-full h-full spin-slow" viewBox="0 0 100 100">
+              <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
+              <text font-size="11.5" font-weight="bold" fill="#121518" font-family="Poppins" letter-spacing="2">
+                <textPath href="#circlePath" startOffset="0%">YEARS OF EXPERIENCE • YEARS OF EXPERIENCE •</textPath>
+              </text>
+            </svg>
+          </div>
+          
+          <div class="absolute top-0 -left-10 w-full h-full bg-soft rounded-[3rem] -z-10 transform -rotate-3"></div>
+        </div>
+
+        <div data-aos="fade-left">
+          <div class="mb-8">
+            <span class="text-primary font-heading font-semibold uppercase tracking-wider text-sm mb-2 block">Who We Are</span>
+            <h2 class="font-heading text-4xl md:text-5xl font-bold text-dark leading-[1.2]">
+              Empowering businesses with <span class="text-transparent bg-clip-text bg-brand-gradient">innovative solutions</span>
+            </h2>
+          </div>
+          
+          <p class="text-gray-500 mb-8 leading-relaxed text-lg">
+            We are dedicated to delivering innovative solutions that empower businesses to reach their full potential. With a team of experienced professionals and a customer-centric approach, we address complex business challenges.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-8 mb-10 border-t border-gray-100 pt-8">
+            <div>
+              <div class="size-12 bg-soft text-primary rounded-xl flex items-center justify-center mb-4">
+                <i data-lucide="eye" class="size-6"></i>
+              </div>
+              <h4 class="font-heading font-bold text-dark text-lg mb-2">Our Vision</h4>
+              <p class="text-sm text-gray-500 leading-relaxed">To be the MEA region's preferred technology partner by delivering customer-centric services that drive success.</p>
+            </div>
+            <div>
+              <div class="size-12 bg-soft text-primary rounded-xl flex items-center justify-center mb-4">
+                <i data-lucide="target" class="size-6"></i>
+              </div>
+              <h4 class="font-heading font-bold text-dark text-lg mb-2">Our Mission</h4>
+              <p class="text-sm text-gray-500 leading-relaxed">To empower businesses with cutting-edge services aligned with operational and strategic objectives.</p>
+            </div>
+          </div>
+
+          <a href="#services" class="inline-flex justify-center items-center gap-x-2 py-3.5 px-8 bg-dark hover:bg-primary text-white font-heading font-medium rounded-full transition-colors">
+            Discover More <i data-lucide="arrow-right" class="size-4"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="services" class="py-20 bg-soft">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6" data-aos="fade-up">
+        <div class="max-w-2xl">
+          <span class="text-primary font-heading font-semibold uppercase tracking-wider text-sm mb-2 block">What We Offer</span>
+          <h2 class="font-heading text-4xl md:text-5xl font-bold text-dark leading-tight">
+            Our services to empower your <span class="text-primary italic font-light">business journey</span>
+          </h2>
+        </div>
+        <p class="text-gray-500 max-w-sm border-l-2 border-primary pl-4 py-1">
+          We offer a diverse range of services designed to meet the unique needs of your business.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div data-aos="fade-up" data-aos-delay="100" class="corporate-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative group overflow-hidden">
+          <div class="icon-box size-16 bg-soft text-primary rounded-full flex items-center justify-center mb-6 z-10 relative">
+            <i data-lucide="code-2" class="size-7"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-dark mb-4 z-10 relative group-hover:text-primary transition-colors">Software House</h3>
+          <p class="text-gray-500 mb-8 z-10 relative leading-relaxed">Smart, user-focused IT designs tailored to streamline your specific business processes and digital presence.</p>
+          <a href="#" class="inline-flex items-center gap-2 font-heading font-semibold text-dark group-hover:text-primary transition-colors z-10 relative">
+            Read More <i data-lucide="arrow-right" class="size-4 transition-transform group-hover:translate-x-1"></i>
+          </a>
+          <div class="absolute -right-8 -bottom-8 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none text-dark">
+            <i data-lucide="code-2" class="size-48"></i>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200" class="corporate-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative group overflow-hidden">
+          <div class="icon-box size-16 bg-soft text-primary rounded-full flex items-center justify-center mb-6 z-10 relative">
+            <i data-lucide="graduation-cap" class="size-7"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-dark mb-4 z-10 relative group-hover:text-primary transition-colors">Education Solutions</h3>
+          <p class="text-gray-500 mb-8 z-10 relative leading-relaxed">Data-driven analytic solutions that empower educational institutions with actionable insights.</p>
+          <a href="#" class="inline-flex items-center gap-2 font-heading font-semibold text-dark group-hover:text-primary transition-colors z-10 relative">
+            Read More <i data-lucide="arrow-right" class="size-4 transition-transform group-hover:translate-x-1"></i>
+          </a>
+          <div class="absolute -right-8 -bottom-8 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none text-dark">
+            <i data-lucide="graduation-cap" class="size-48"></i>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="300" class="corporate-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative group overflow-hidden">
+          <div class="icon-box size-16 bg-soft text-primary rounded-full flex items-center justify-center mb-6 z-10 relative">
+            <i data-lucide="network" class="size-7"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-dark mb-4 z-10 relative group-hover:text-primary transition-colors">Integration</h3>
+          <p class="text-gray-500 mb-8 z-10 relative leading-relaxed">Comprehensive risk management and seamless integration across your entire digital platforms.</p>
+          <a href="#" class="inline-flex items-center gap-2 font-heading font-semibold text-dark group-hover:text-primary transition-colors z-10 relative">
+            Read More <i data-lucide="arrow-right" class="size-4 transition-transform group-hover:translate-x-1"></i>
+          </a>
+          <div class="absolute -right-8 -bottom-8 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none text-dark">
+            <i data-lucide="network" class="size-48"></i>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="400" class="corporate-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative group overflow-hidden">
+          <div class="icon-box size-16 bg-soft text-primary rounded-full flex items-center justify-center mb-6 z-10 relative">
+            <i data-lucide="database" class="size-7"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-dark mb-4 z-10 relative group-hover:text-primary transition-colors">Data Science</h3>
+          <p class="text-gray-500 mb-8 z-10 relative leading-relaxed">Strategic IT-driven business plans harnessing the full potential of your organizational data.</p>
+          <a href="#" class="inline-flex items-center gap-2 font-heading font-semibold text-dark group-hover:text-primary transition-colors z-10 relative">
+            Read More <i data-lucide="arrow-right" class="size-4 transition-transform group-hover:translate-x-1"></i>
+          </a>
+          <div class="absolute -right-8 -bottom-8 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none text-dark">
+            <i data-lucide="database" class="size-48"></i>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="500" class="corporate-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative group overflow-hidden">
+          <div class="icon-box size-16 bg-soft text-primary rounded-full flex items-center justify-center mb-6 z-10 relative">
+            <i data-lucide="rocket" class="size-7"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-dark mb-4 z-10 relative group-hover:text-primary transition-colors">Digital Transformation</h3>
+          <p class="text-gray-500 mb-8 z-10 relative leading-relaxed">Deploying robust IT infrastructure to modernize and future-proof your business models.</p>
+          <a href="#" class="inline-flex items-center gap-2 font-heading font-semibold text-dark group-hover:text-primary transition-colors z-10 relative">
+            Read More <i data-lucide="arrow-right" class="size-4 transition-transform group-hover:translate-x-1"></i>
+          </a>
+          <div class="absolute -right-8 -bottom-8 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none text-dark">
+            <i data-lucide="rocket" class="size-48"></i>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="600" class="corporate-card bg-brand-gradient rounded-2xl p-8 shadow-lg relative group overflow-hidden">
+          <div class="icon-box size-16 bg-white text-primary rounded-full flex items-center justify-center mb-6 z-10 relative">
+            <i data-lucide="shield" class="size-7"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white mb-4 z-10 relative">Service Lifecycle</h3>
+          <p class="text-white/90 mb-8 z-10 relative leading-relaxed">Advanced firewall & network safeguards ensuring operational continuity from end to end.</p>
+          <a href="#" class="inline-flex items-center gap-2 font-heading font-semibold text-white hover:opacity-80 transition-opacity z-10 relative">
+            Read More <i data-lucide="arrow-right" class="size-4 transition-transform group-hover:translate-x-1"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="py-20 bg-white">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="text-primary font-heading font-semibold uppercase tracking-wider text-sm mb-2 block">How We Work?</span>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-dark">
+          Driving innovation with <br><span class="text-transparent bg-clip-text bg-brand-gradient">collaborative solutions</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-10 relative">
+        <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-[2px] bg-gray-100 -z-10"></div>
+
+        <div class="text-center bg-white" data-aos="fade-up" data-aos-delay="100">
+          <div class="size-24 mx-auto bg-white border-4 border-soft rounded-full flex items-center justify-center text-primary mb-6 relative">
+            <i data-lucide="search" class="size-8"></i>
+            <div class="absolute -top-2 -right-2 size-8 bg-dark text-white rounded-full flex items-center justify-center font-bold text-sm">01</div>
+          </div>
+          <h4 class="font-heading font-bold text-xl text-dark mb-3">Discovery & Analysis</h4>
+          <p class="text-gray-500">We begin with an in-depth consultation to understand your vision, goals, and business challenges.</p>
+        </div>
+
+        <div class="text-center bg-white" data-aos="fade-up" data-aos-delay="200">
+          <div class="size-24 mx-auto bg-white border-4 border-soft rounded-full flex items-center justify-center text-primary mb-6 relative shadow-[0_0_30px_rgba(63,166,74,0.2)] border-primary/20">
+            <i data-lucide="pen-tool" class="size-8"></i>
+            <div class="absolute -top-2 -right-2 size-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">02</div>
+          </div>
+          <h4 class="font-heading font-bold text-xl text-dark mb-3">Concept & Design</h4>
+          <p class="text-gray-500">We brainstorm ideas and create tailored IT architectural concepts presented to you for feedback.</p>
+        </div>
+
+        <div class="text-center bg-white" data-aos="fade-up" data-aos-delay="300">
+          <div class="size-24 mx-auto bg-white border-4 border-soft rounded-full flex items-center justify-center text-primary mb-6 relative">
+            <i data-lucide="rocket" class="size-8"></i>
+            <div class="absolute -top-2 -right-2 size-8 bg-dark text-white rounded-full flex items-center justify-center font-bold text-sm">03</div>
+          </div>
+          <h4 class="font-heading font-bold text-xl text-dark mb-3">Delivery & Support</h4>
+          <p class="text-gray-500">After thorough testing, we launch your project and provide robust ongoing technical support.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="vendors" class="py-24 bg-dark relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072')] bg-cover bg-center mix-blend-overlay opacity-10"></div>
+    
+    <div class="relative z-10 max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Trusted by 50+ Global Vendors</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">We have established a robust network of industry-leading partners to deliver diverse, innovative solutions.</p>
+    </div>
+
+    <div class="relative w-full flex overflow-hidden z-10">
+      <div class="absolute inset-y-0 start-0 w-32 bg-gradient-to-r from-dark to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute inset-y-0 end-0 w-32 bg-gradient-to-l from-dark to-transparent z-10 pointer-events-none"></div>
+      
+      <div class="animate-marquee flex items-center gap-20 px-10">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/logo-1.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/cropped-img_logo_site_Premium-Line.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/002-removebg-preview.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/008.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/001.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/018.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2022/06/veeam-logo-300x90.webp" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/logo-1.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/cropped-img_logo_site_Premium-Line.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/002-removebg-preview.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/008.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/001.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2025/11/018.png" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+        <img src="https://conservmisr.com/wp-content/uploads/2022/06/veeam-logo-300x90.webp" class="h-10 object-contain brightness-0 invert opacity-50 hover:opacity-100 transition duration-300" alt="Vendor">
+      </div>
+    </div>
+  </div>
+  <div class="py-24 bg-soft">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="text-primary font-heading font-semibold uppercase tracking-wider text-sm mb-2 block">FAQ</span>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-dark">Common Questions</h2>
+      </div>
+
+      <div class="hs-accordion-group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+        
+        <div class="hs-accordion active border-b border-gray-100" id="faq-1">
+          <button class="hs-accordion-toggle py-6 px-8 inline-flex items-center justify-between w-full font-heading text-lg font-semibold text-start text-dark hover:text-primary transition-colors bg-white hs-accordion-active:bg-gray-50" aria-controls="faq-collapse-1">
+            What IT services do you provide?
+            <span class="size-8 rounded-full border border-gray-200 flex items-center justify-center shrink-0 hs-accordion-active:border-primary hs-accordion-active:bg-primary hs-accordion-active:text-white transition-colors">
+              <i data-lucide="chevron-down" class="hs-accordion-active:hidden block size-4"></i>
+              <i data-lucide="chevron-up" class="hs-accordion-active:block hidden size-4"></i>
+            </span>
+          </button>
+          <div id="faq-collapse-1" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 bg-white" aria-labelledby="faq-1">
+            <p class="text-gray-500 pb-6 px-8 leading-relaxed">We provide a comprehensive suite including Software House Solutions, Data Science, Education analytics, Integration services, Digital Transformation, and Service Lifecycle management.</p>
+          </div>
+        </div>
+
+        <div class="hs-accordion border-b border-gray-100" id="faq-2">
+          <button class="hs-accordion-toggle py-6 px-8 inline-flex items-center justify-between w-full font-heading text-lg font-semibold text-start text-dark hover:text-primary transition-colors bg-white hs-accordion-active:bg-gray-50" aria-controls="faq-collapse-2">
+            Do you provide technical support post-delivery?
+            <span class="size-8 rounded-full border border-gray-200 flex items-center justify-center shrink-0 hs-accordion-active:border-primary hs-accordion-active:bg-primary hs-accordion-active:text-white transition-colors">
+              <i data-lucide="chevron-down" class="hs-accordion-active:hidden block size-4"></i>
+              <i data-lucide="chevron-up" class="hs-accordion-active:block hidden size-4"></i>
+            </span>
+          </button>
+          <div id="faq-collapse-2" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300 bg-white" aria-labelledby="faq-2">
+            <p class="text-gray-500 pb-6 px-8 leading-relaxed">Yes, our Service Lifecycle Solutions ensure you receive ongoing technical support, maintenance, and robust infrastructure monitoring long after the initial delivery.</p>
+          </div>
+        </div>
+
+        <div class="hs-accordion" id="faq-3">
+          <button class="hs-accordion-toggle py-6 px-8 inline-flex items-center justify-between w-full font-heading text-lg font-semibold text-start text-dark hover:text-primary transition-colors bg-white hs-accordion-active:bg-gray-50" aria-controls="faq-collapse-3">
+            Can you customize IT solutions for my business?
+            <span class="size-8 rounded-full border border-gray-200 flex items-center justify-center shrink-0 hs-accordion-active:border-primary hs-accordion-active:bg-primary hs-accordion-active:text-white transition-colors">
+              <i data-lucide="chevron-down" class="hs-accordion-active:hidden block size-4"></i>
+              <i data-lucide="chevron-up" class="hs-accordion-active:block hidden size-4"></i>
+            </span>
+          </button>
+          <div id="faq-collapse-3" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300 bg-white" aria-labelledby="faq-3">
+            <p class="text-gray-500 pb-6 px-8 leading-relaxed">Absolutely. We pride ourselves on being a customer-focused technology partner, meaning every solution is highly customized to align with your specific strategic and operational objectives.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="py-24 bg-white border-t border-gray-100">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-dark rounded-[2rem] p-10 md:p-16 relative overflow-hidden" data-aos="zoom-in">
+        <div class="absolute -right-20 -top-20 size-80 bg-primary rounded-full blur-3xl opacity-20"></div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+          <div class="max-w-2xl">
+            <h2 class="font-heading text-3xl md:text-5xl font-bold text-white mb-4">Let’s make something great work together.</h2>
+            <p class="text-gray-400 text-lg">Partner with ConServ Misr to address your complex business challenges.</p>
+          </div>
+          <a href="#footer" class="shrink-0 py-4 px-8 bg-primary hover:bg-white hover:text-dark text-white font-heading font-medium rounded-full transition-all shadow-lg shadow-primary/30 flex items-center justify-center gap-2">
+            Get A Free Consultation <i data-lucide="arrow-right" class="size-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer" class="bg-soft pt-20 pb-10 border-t border-gray-200">
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+        
+        <div class="md:col-span-4 lg:col-span-4">
+          <img src="./logo_white.png" alt="ConServ" class="h-9 mb-6" onerror="this.outerHTML='<span class=\'font-heading text-2xl font-bold block mb-6 text-dark\'>ConServ.</span>'">
+          <p class="text-gray-500 leading-relaxed mb-8 max-w-sm">
+            Our commitment to excellence & client satisfaction drives us to deliver results that elevate brands and foster growth.
+          </p>
+          <div class="flex gap-2">
+            <a href="#" class="size-10 bg-white rounded-full flex items-center justify-center text-dark hover:bg-primary hover:text-white transition shadow-sm border border-gray-100"><svg class="size-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" /></svg></a>
+            <a href="#" class="size-10 bg-white rounded-full flex items-center justify-center text-dark hover:bg-primary hover:text-white transition shadow-sm border border-gray-100"><svg class="size-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a>
+            <a href="#" class="size-10 bg-white rounded-full flex items-center justify-center text-dark hover:bg-primary hover:text-white transition shadow-sm border border-gray-100"><svg class="size-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 lg:col-span-2">
+          <h4 class="font-heading text-lg font-bold text-dark mb-6">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-500 hover:text-primary transition-colors font-medium">Home</a></li>
+            <li><a href="#about" class="text-gray-500 hover:text-primary transition-colors font-medium">About Us</a></li>
+            <li><a href="#services" class="text-gray-500 hover:text-primary transition-colors font-medium">Services</a></li>
+            <li><a href="#vendors" class="text-gray-500 hover:text-primary transition-colors font-medium">Vendors</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-5 lg:col-span-3">
+          <h4 class="font-heading text-lg font-bold text-dark mb-6">Our Services</h4>
+          <ul class="space-y-3">
+            <li><a href="#services" class="text-gray-500 hover:text-primary transition-colors font-medium">Software House Solutions</a></li>
+            <li><a href="#services" class="text-gray-500 hover:text-primary transition-colors font-medium">Education Solutions</a></li>
+            <li><a href="#services" class="text-gray-500 hover:text-primary transition-colors font-medium">Integration Solutions</a></li>
+            <li><a href="#services" class="text-gray-500 hover:text-primary transition-colors font-medium">Data Science Solutions</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-12 lg:col-span-3">
+          <h4 class="font-heading text-lg font-bold text-dark mb-6">Contact Info</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3 text-gray-500">
+              <i data-lucide="map-pin" class="size-5 shrink-0 text-primary mt-0.5"></i>
+              <span class="font-medium">Building 57, Hassan Aflaton St, Golf Land, Heliopolis</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-500">
+              <i data-lucide="mail" class="size-5 shrink-0 text-primary"></i>
+              <a href="mailto:info@conservmisr.com" class="hover:text-primary transition-colors font-medium">info@conservmisr.com</a>
+            </li>
+            <li class="flex items-center gap-3 text-gray-500">
+              <i data-lucide="phone" class="size-5 shrink-0 text-primary"></i>
+              <a href="tel:+0222903729" class="hover:text-primary transition-colors font-medium">+0222903729</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-gray-500 font-medium">Copyright © 2026 <span class="text-dark font-bold">ConServ</span>. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">Term Of Use</a>
+          <a href="#" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">Privacy Policy</a>
+          <a href="#" class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script>
+    // 1. Awaiken Navbar Scroll Effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      const logo = document.getElementById('nav-logo');
+      const links = document.querySelectorAll('.nav-link');
+      const icon = document.querySelector('.nav-icon');
+      const mobileBtn = document.getElementById('mobile-toggle');
+      
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+        navbar.classList.remove('py-5');
+        
+        // Swap to dark logo
+        logo.src = './logo_white.png';
+        
+        // Change link colors
+        links.forEach(link => {
+          link.classList.remove('text-white');
+          link.classList.add('text-dark');
+        });
+
+        // Mobile menu icon color
+        if(icon) icon.classList.remove('text-white');
+        if(icon) icon.classList.add('text-dark');
+        if(mobileBtn) mobileBtn.classList.remove('border-white/20');
+        if(mobileBtn) mobileBtn.classList.add('border-gray-200');
+
+      } else {
+        navbar.classList.remove('scrolled');
+        navbar.classList.add('py-5');
+        
+        // Swap to white logo
+        logo.src = './logo.png';
+        
+        // Change link colors
+        links.forEach(link => {
+          link.classList.remove('text-dark');
+          link.classList.add('text-white');
+        });
+
+        // Mobile menu icon color
+        if(icon) icon.classList.remove('text-dark');
+        if(icon) icon.classList.add('text-white');
+        if(mobileBtn) mobileBtn.classList.remove('border-gray-200');
+        if(mobileBtn) mobileBtn.classList.add('border-white/20');
+      }
+    });
+
+    // 2. Initialize Preloader & AOS
+    window.addEventListener('load', function() {
+      // Trigger initial scroll check for navbar
+      window.dispatchEvent(new Event('scroll'));
+      
+      const preloader = document.getElementById('preloader');
+      preloader.classList.add('fade-out');
+      setTimeout(() => {
+        preloader.style.display = 'none';
+        AOS.init({ duration: 800, once: true, offset: 50 });
+      }, 500);
+    });
+
+    // 3. Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
