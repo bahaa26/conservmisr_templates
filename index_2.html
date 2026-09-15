@@ -1,638 +1,994 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ConServ Misr | Startit Inspired IT Solutions</title>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- AOS Animation CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  
-  <!-- Swiper.js CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  
-  <!-- Brand Colors & Tailwind Config -->
-  <style>
-    :root {
-      --primary-green: #3FA64A;
-      --primary-lime: #C9D91A;
-      --brand-gradient: linear-gradient(135deg, #3FA64A 0%, #C9D91A 100%);
-      --secondary-green: #35A645;
-      --white: #FAFAFA;
-      --black: #000000;
-      --text-dark: #1C1C1C;
-      --background-soft: #F6F8F0;
-    }
-    
-    /* Marquee Animation */
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    .animate-marquee {
-      display: flex;
-      width: max-content;
-      animation: marquee 35s linear infinite;
-    }
-    .animate-marquee:hover {
-      animation-play-state: paused;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConServ Misr | Enterprise IT Solutions</title>
 
-    /* Preloader */
-    .fade-out {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-    }
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    /* Custom Swiper Styles */
-    .swiper-pagination-bullet { background: rgba(255,255,255,0.5); opacity: 1; width: 10px; height: 10px; transition: all 0.3s ease; }
-    .swiper-pagination-bullet-active { background: #3FA64A; width: 24px; border-radius: 5px; }
-    .swiper-button-next, .swiper-button-prev { color: white; background: rgba(0,0,0,0.2); padding: 30px; border-radius: 50%; backdrop-filter: blur(4px); transition: all 0.3s ease; }
-    .swiper-button-next:hover, .swiper-button-prev:hover { background: #3FA64A; }
-    .swiper-button-next:after, .swiper-button-prev:after { font-size: 18px; font-weight: bold; }
-    
-    /* Startit Inspired Icon Hover Effect */
-    .startit-icon-box:hover .icon-circle {
-      background-color: #3FA64A;
-      color: white;
-      transform: scale(1.1);
-    }
-  </style>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#3FA64A',
-            lime: '#C9D91A',
-            secondary: '#35A645',
-            soft: '#F6F8F0',
-            dark: '#222222',
-            lightgray: '#F9F9F9'
-          },
-          backgroundImage: {
-            'brand-gradient': 'linear-gradient(135deg, #3FA64A 0%, #C9D91A 100%)',
-          }
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Brand Colors & Tailwind Config -->
+    <style>
+      :root {
+        --primary-green: #3fa64a;
+        --primary-lime: #c9d91a;
+        --brand-gradient: linear-gradient(135deg, #3fa64a 0%, #c9d91a 100%);
+        --secondary-green: #35a645;
+        --white: #fafafa;
+        --black: #000000;
+        --text-dark: #1c1c1c;
+        --background-soft: #f6f8f0;
+      }
+
+      /* Marquee Animation */
+      @keyframes marquee {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-50%);
         }
       }
-    }
-  </script>
+      .animate-marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 35s linear infinite;
+      }
+      .animate-marquee:hover {
+        animation-play-state: paused;
+      }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
-    h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Raleway', sans-serif; }
-  </style>
-</head>
-<body class="bg-white text-gray-600 antialiased">
+      /* Floating Element Animation */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
 
-  <!-- ========== PRELOADER ========== -->
-  <div id="preloader" class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center">
-    <div class="flex items-center gap-2 mb-4">
-      <div class="size-3 bg-primary rounded-full animate-bounce" style="animation-delay: 0s;"></div>
-      <div class="size-3 bg-lime rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
-      <div class="size-3 bg-primary rounded-full animate-bounce" style="animation-delay: 0.4s;"></div>
+      /* Preloader Fade Out */
+      .fade-out {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3FA64A",
+              lime: "#C9D91A",
+              secondary: "#35A645",
+              soft: "#F6F8F0",
+              dark: "#1C1C1C",
+            },
+            backgroundImage: {
+              "brand-gradient":
+                "linear-gradient(135deg, #3FA64A 0%, #C9D91A 100%)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-dark antialiased">
+    <!-- ========== PRELOADER ========== -->
+    <div
+      id="preloader"
+      class="fixed inset-0 z-[9999] bg-dark flex items-center justify-center"
+    >
+      <div class="relative flex justify-center items-center">
+        <!-- Pulsing Ring -->
+        <div
+          class="absolute animate-ping inline-flex h-24 w-24 rounded-full bg-primary opacity-30"
+        ></div>
+        <!-- Logo -->
+        <img
+          src="./logo.png"
+          alt="Loading"
+          class="h-12 z-10 brightness-0 invert object-contain"
+          onerror="this.outerHTML='<span class=\'text-2xl text-white font-bold z-10\'>ConServ</span>'"
+        />
+      </div>
     </div>
-  </div>
-  <!-- ========== END PRELOADER ========== -->
+    <!-- ========== END PRELOADER ========== -->
 
-  <!-- ========== HEADER (TRANSPARENT TO SOLID SCROLL) ========== -->
-  <header id="navbar" class="fixed top-0 inset-x-0 z-50 w-full transition-all duration-300 bg-transparent border-b border-transparent">
-    <nav class="relative max-w-[85rem] w-full mx-auto md:flex md:items-center md:justify-between py-4 px-4 sm:px-6 lg:px-8" aria-label="Global">
-      <div class="flex items-center justify-between">
-        <a class="flex-none" href="#" aria-label="ConServ Misr">
-          <!-- Loads logo_white.png by default -->
-          <img src="./logo_white.png" alt="ConServ Misr Logo" class="h-10 w-auto object-contain transition-all duration-300" id="nav-logo" onerror="this.outerHTML='<span class=\'text-2xl font-bold text-white\'>ConServ Misr</span>'">
-        </a>
-        <div class="md:hidden">
-          <button type="button" class="hs-collapse-toggle size-9 flex justify-center items-center text-sm font-semibold rounded-lg border border-white/20 text-white hover:bg-white/10" data-hs-collapse="#navbar-collapse" aria-controls="navbar-collapse" aria-label="Toggle navigation">
-            <i data-lucide="menu" class="hs-collapse-open:hidden size-4"></i>
-            <i data-lucide="x" class="hs-collapse-open:block hidden size-4"></i>
-          </button>
-        </div>
-      </div>
-      <div id="navbar-collapse" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
-        <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-8 md:mt-0 md:ps-7 bg-dark md:bg-transparent p-4 md:p-0 rounded-xl md:rounded-none shadow-xl md:shadow-none">
-          <a class="font-heading font-bold text-primary text-sm uppercase tracking-wider" href="#" aria-current="page">Home</a>
-          <a class="font-heading font-bold text-white hover:text-primary transition text-sm uppercase tracking-wider nav-link" href="#about">About Us</a>
-          <a class="font-heading font-bold text-white hover:text-primary transition text-sm uppercase tracking-wider nav-link" href="#services">Solutions</a>
-          <a class="font-heading font-bold text-white hover:text-primary transition text-sm uppercase tracking-wider nav-link" href="#vendors">Partners</a>
-          <a class="flex items-center gap-x-2 font-heading font-bold text-white bg-primary hover:bg-secondary py-3 px-7 rounded-sm transition text-sm uppercase tracking-wider" href="#footer">
-            Contact Us
+    <!-- ========== HEADER ========== -->
+    <header
+      class="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full bg-dark border-b border-gray-800 sticky top-0 transition-transform duration-300"
+      id="navbar"
+    >
+      <nav
+        class="relative max-w-[85rem] w-full mx-auto md:flex md:items-center md:justify-between py-4 px-4 sm:px-6 lg:px-8"
+        aria-label="Global"
+      >
+        <div class="flex items-center justify-between">
+          <a class="flex-none" href="#" aria-label="ConServ Misr">
+            <img
+              src="./logo.png"
+              alt="ConServ Misr Logo"
+              class="h-10 w-auto object-contain"
+              onerror="this.outerHTML='<span class=\'text-2xl font-bold text-white\'>ConServ Misr</span>'"
+            />
           </a>
+          <div class="md:hidden">
+            <button
+              type="button"
+              class="hs-collapse-toggle size-9 flex justify-center items-center text-sm font-semibold rounded-lg border border-gray-700 text-white hover:bg-gray-800"
+              data-hs-collapse="#navbar-collapse"
+              aria-controls="navbar-collapse"
+              aria-label="Toggle navigation"
+            >
+              <i data-lucide="menu" class="hs-collapse-open:hidden size-4"></i>
+              <i
+                data-lucide="x"
+                class="hs-collapse-open:block hidden size-4"
+              ></i>
+            </button>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <!-- ========== END HEADER ========== -->
+        <div
+          id="navbar-collapse"
+          class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
+        >
+          <div
+            class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:ps-7"
+          >
+            <a
+              class="font-medium text-primary md:py-6"
+              href="#"
+              aria-current="page"
+              >Home</a
+            >
+            <a
+              class="font-medium text-gray-300 hover:text-white md:py-6 transition"
+              href="#about"
+              >About Us</a
+            >
+            <a
+              class="font-medium text-gray-300 hover:text-white md:py-6 transition"
+              href="#services"
+              >Solutions</a
+            >
+            <a
+              class="font-medium text-gray-300 hover:text-white md:py-6 transition"
+              href="#vendors"
+              >Vendors</a
+            >
+            <a
+              class="flex items-center gap-x-2 font-medium text-white bg-brand-gradient hover:opacity-90 py-2 px-5 rounded-lg transition shadow-lg shadow-green-900/20"
+              href="#footer"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ========== END HEADER ========== -->
 
-  <!-- ========== HERO SLIDER (SWIPER) ========== -->
-  <div class="swiper hero-swiper h-screen w-full relative">
-    <div class="swiper-wrapper">
-      
-      <!-- Slide 1: Video Background -->
-      <div class="swiper-slide relative">
-        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-          <source src="hero.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/60"></div>
-        
-        <div class="relative h-full flex flex-col justify-center items-center text-center max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <div data-swiper-parallax="-300">
-            <h1 class="font-heading text-5xl md:text-7xl lg:text-[80px] font-extrabold text-white leading-tight mb-6">
-              Why Wait? <br>
-              <span class="text-primary">Start IT</span> Right Now!
+    <!-- ========== HERO SECTION (ENHANCED) ========== -->
+    <div class="relative overflow-hidden bg-white">
+      <!-- Ambient Glowing Orbs -->
+      <div
+        class="absolute top-0 start-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"
+      ></div>
+      <div
+        class="absolute bottom-0 end-0 w-96 h-96 bg-lime/10 rounded-full blur-3xl transform translate-x-1/3 translate-y-1/3"
+      ></div>
+
+      <div
+        class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 relative z-10"
+      >
+        <div
+          class="grid md:grid-cols-2 gap-8 md:gap-12 xl:gap-20 md:items-center"
+        >
+          <!-- Hero Text -->
+          <div>
+            <span
+              data-aos="fade-up"
+              data-aos-delay="100"
+              class="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-green-50 text-primary text-sm font-semibold mb-6 border border-green-200 shadow-sm"
+            >
+              <span class="size-2 rounded-full bg-primary animate-pulse"></span>
+              Trusted IT & Digital Transformation Partner
+            </span>
+
+            <h1
+              data-aos="fade-up"
+              data-aos-delay="200"
+              class="block text-4xl font-extrabold text-dark sm:text-5xl lg:text-6xl lg:leading-tight tracking-tight"
+            >
+              Offer The Latest Software And Solutions To <br />
+              <span
+                class="text-transparent bg-clip-text bg-brand-gradient relative inline-block"
+              >
+                Our Customers!
+                <svg
+                  class="absolute -bottom-2 w-full h-3 text-lime opacity-50"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 5 Q 50 10 100 5"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    fill="transparent"
+                  />
+                </svg>
+              </span>
             </h1>
-            <p class="text-xl text-gray-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-              Make your awesome business idea a reality with ConServ Misr, the premier customer-focused technology partner dedicated to integrating seamlessly with the digital ecosystem.
+
+            <p
+              data-aos="fade-up"
+              data-aos-delay="300"
+              class="mt-6 text-lg text-gray-600 leading-relaxed max-w-lg"
+            >
+              ConServ is a customer-focused technology partner dedicated to
+              integrating seamlessly with the digital ecosystem. We address
+              complex business challenges while fostering long-term partnerships
+              built on trust.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="#services" class="py-4 px-10 bg-primary hover:bg-secondary text-white font-heading font-bold uppercase tracking-wider text-sm rounded-sm transition">
-                Check It Out
+
+            <div
+              data-aos="fade-up"
+              data-aos-delay="400"
+              class="mt-10 flex flex-col sm:flex-row gap-4"
+            >
+              <a
+                class="w-full sm:w-auto py-3.5 px-7 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl border border-transparent bg-brand-gradient text-white hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
+                href="#services"
+              >
+                Explore Services
+                <i data-lucide="arrow-right" class="size-4"></i>
               </a>
-              <a href="#footer" class="py-4 px-10 bg-transparent border-2 border-white hover:bg-white hover:text-dark text-white font-heading font-bold uppercase tracking-wider text-sm rounded-sm transition">
-                Start A Project
+              <a
+                class="w-full sm:w-auto py-3.5 px-7 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-xl border border-gray-200 text-dark bg-white hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 shadow-sm"
+                href="#about"
+              >
+                Our Vision
               </a>
+            </div>
+          </div>
+
+          <!-- Hero Image & Stats -->
+          <div
+            class="relative ms-4 mt-12 md:mt-0"
+            data-aos="zoom-in-left"
+            data-aos-delay="0"
+          >
+            <!-- Main Image -->
+            <div
+              class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100 group"
+            >
+              <img
+                class="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-0"
+                src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop"
+                alt="IT Consulting Team"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent"
+              ></div>
+            </div>
+
+            <!-- Background Decoration -->
+            <div
+              class="absolute inset-0 -z-[1] bg-brand-gradient w-full h-full rounded-2xl blur-2xl opacity-20 transform translate-x-6 translate-y-6"
+            ></div>
+
+            <!-- Floating Stats Card (Enhanced) -->
+            <div
+              class="absolute -bottom-6 -start-6 bg-white p-5 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 animate-float z-20"
+            >
+              <div
+                class="size-14 bg-gradient-to-br from-green-50 to-lime/20 rounded-xl flex items-center justify-center text-primary shadow-inner"
+              >
+                <i data-lucide="shield-check" class="size-7"></i>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-dark tracking-tight">50+</p>
+                <p class="text-sm text-gray-500 font-medium">Global Vendors</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <!-- ========== END HERO ========== -->
 
-      <!-- Slide 2: Enterprise IT Image -->
-      <div class="swiper-slide relative">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070')] bg-cover bg-center"></div>
-        <div class="absolute inset-0 bg-black/60"></div>
-        
-        <div class="relative h-full flex flex-col justify-center max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-4xl" data-swiper-parallax="-300">
-            <h1 class="font-heading text-5xl md:text-7xl lg:text-[80px] font-extrabold text-white leading-tight mb-6">
-              Design The Web <br>
-              In <span class="text-primary">Your Image</span>
-            </h1>
-            <p class="text-xl text-gray-200 mb-10 max-w-2xl font-light leading-relaxed">
-              With an intuitive set of enterprise solutions and comprehensive risk management, we adapt to your specific operational and strategic objectives.
-            </p>
-            <a href="#about" class="py-4 px-10 bg-primary hover:bg-secondary text-white font-heading font-bold uppercase tracking-wider text-sm rounded-sm transition inline-block">
-              Discover How
-            </a>
+    <!-- ========== VENDORS & PARTNERS (IMAGE SLIDER) ========== -->
+    <div
+      id="vendors"
+      class="border-y border-gray-200 bg-soft py-10 overflow-hidden relative"
+      data-aos="fade-up"
+    >
+      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
+        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+          Trusted by Industry Leaders
+        </p>
+      </div>
+      <div class="relative w-full flex overflow-hidden group">
+        <div
+          class="absolute inset-y-0 start-0 w-32 bg-gradient-to-r from-soft to-transparent z-10 pointer-events-none"
+        ></div>
+        <div
+          class="absolute inset-y-0 end-0 w-32 bg-gradient-to-l from-soft to-transparent z-10 pointer-events-none"
+        ></div>
+        <div class="animate-marquee flex items-center gap-16 px-8">
+          <!-- Set 1 -->
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/logo-1.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/cropped-img_logo_site_Premium-Line.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/002-removebg-preview.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/008.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/001.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/018.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2022/06/veeam-logo-300x90.webp"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <!-- Set 2 -->
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/logo-1.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/cropped-img_logo_site_Premium-Line.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/002-removebg-preview.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/008.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/001.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2025/11/018.png"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+          <img
+            src="https://conservmisr.com/wp-content/uploads/2022/06/veeam-logo-300x90.webp"
+            class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300"
+            alt="Vendor"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- ========== END VENDORS ========== -->
+
+    <!-- ========== ABOUT (VISION & MISSION) ========== -->
+    <div id="about" class="py-16 sm:py-24 overflow-hidden">
+      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div
+            data-aos="fade-right"
+            class="relative overflow-hidden rounded-2xl group min-h-[350px] shadow-lg"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              alt="Vision"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-transparent"
+            ></div>
+            <div class="absolute inset-0 p-8 flex flex-col justify-end">
+              <div
+                class="p-3 bg-primary/20 backdrop-blur-md w-fit rounded-xl mb-4 text-white"
+              >
+                <i data-lucide="eye" class="size-8"></i>
+              </div>
+              <h3 class="text-3xl font-bold text-white mb-3">Our Vision</h3>
+              <p class="text-gray-300 leading-relaxed text-lg">
+                To be the MEA region's preferred technology partner by
+                delivering customer-centric services and solutions that
+                complement the ecosystem and drive business success.
+              </p>
+            </div>
+          </div>
+
+          <div
+            data-aos="fade-left"
+            class="relative overflow-hidden rounded-2xl group min-h-[350px] shadow-lg"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              alt="Mission"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-primary via-dark/80 to-transparent"
+            ></div>
+            <div class="absolute inset-0 p-8 flex flex-col justify-end">
+              <div
+                class="p-3 bg-white/20 backdrop-blur-md w-fit rounded-xl mb-4 text-white"
+              >
+                <i data-lucide="target" class="size-8"></i>
+              </div>
+              <h3 class="text-3xl font-bold text-white mb-3">Our Mission</h3>
+              <p class="text-gray-300 leading-relaxed text-lg">
+                To empower businesses with cutting-edge services and solutions
+                that align with their operational and strategic objectives
+                through collaboration and industry expertise.
+              </p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <!-- ========== END ABOUT ========== -->
 
-      <!-- Slide 3: Digital Transformation Image -->
-      <div class="swiper-slide relative">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070')] bg-cover bg-center"></div>
-        <div class="absolute inset-0 bg-black/60"></div>
-        
-        <div class="relative h-full flex flex-col justify-center items-end text-right max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-4xl" data-swiper-parallax="-300">
-            <h1 class="font-heading text-5xl md:text-7xl lg:text-[80px] font-extrabold text-white leading-tight mb-6">
-              Realize Your <br>
-              <span class="text-primary">Full Potential</span>
-            </h1>
-            <p class="text-xl text-gray-200 mb-10 max-w-2xl ml-auto font-light leading-relaxed">
-              Harness the full potential of your organizational data with strategic IT-driven business plans and robust Digital Transformation strategies.
+    <!-- ========== WHY CHOOSE US ========== -->
+    <div class="bg-dark text-white py-16 sm:py-24 overflow-hidden relative">
+      <div
+        class="absolute top-0 right-0 w-1/2 h-full bg-brand-gradient opacity-10 rounded-l-full blur-3xl transform translate-x-1/2"
+      ></div>
+      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-up">
+            <h2 class="text-3xl font-bold md:text-4xl mb-4">
+              Building Long-Lasting Partnerships
+            </h2>
+            <p class="text-gray-400 mb-8 text-lg">
+              Our client portfolio reflects trust and reliability, with a proven
+              track record of exceptional service delivery and ecosystem
+              integration.
             </p>
-            <a href="#services" class="py-4 px-10 bg-primary hover:bg-secondary text-white font-heading font-bold uppercase tracking-wider text-sm rounded-sm transition inline-block">
-              View Solutions
-            </a>
+
+            <div class="space-y-6">
+              <div class="flex gap-4">
+                <div
+                  class="shrink-0 mt-1 size-8 bg-primary/20 text-primary rounded-full flex items-center justify-center"
+                >
+                  <i data-lucide="check" class="size-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold text-white">
+                    Expert Team & Proven Excellence
+                  </h4>
+                  <p class="text-gray-400 mt-1">
+                    Highly skilled professionals delivering projects that speak
+                    to our mastery and technical dedication.
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="shrink-0 mt-1 size-8 bg-primary/20 text-primary rounded-full flex items-center justify-center"
+                >
+                  <i data-lucide="check" class="size-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold text-white">
+                    Visionary Vendor Hub
+                  </h4>
+                  <p class="text-gray-400 mt-1">
+                    We have established a robust network of industry-leading
+                    partners to deliver diverse, innovative solutions.
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div
+                  class="shrink-0 mt-1 size-8 bg-primary/20 text-primary rounded-full flex items-center justify-center"
+                >
+                  <i data-lucide="check" class="size-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-xl font-semibold text-white">
+                    Integrity & Ecosystem Compliance
+                  </h4>
+                  <p class="text-gray-400 mt-1">
+                    We believe in complementing the ecosystem with the highest
+                    standards of integrity. We collaborate, we don't compete.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative" data-aos="zoom-in">
+            <img
+              class="rounded-2xl shadow-2xl border border-gray-800"
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+              alt="ConServ Team Collaboration"
+            />
           </div>
         </div>
       </div>
-
     </div>
-    
-    <!-- Swiper Controls -->
-    <div class="swiper-pagination mb-8"></div>
-    <div class="swiper-button-prev hidden md:flex ml-4"></div>
-    <div class="swiper-button-next hidden md:flex mr-4"></div>
-  </div>
-  <!-- ========== END HERO SLIDER ========== -->
+    <!-- ========== END WHY CHOOSE US ========== -->
 
-  <!-- ========== OVERLAPPING FEATURES GRID (STARTIT STYLE) ========== -->
-  <div class="relative z-20 max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 -mt-24 mb-16">
-    <div class="grid md:grid-cols-4 gap-6">
-      
-      <div class="bg-white rounded-md p-8 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] text-center startit-icon-box cursor-pointer group transition-all duration-300">
-        <div class="icon-circle size-[72px] mx-auto rounded-full border-2 border-primary text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <i data-lucide="bookmark" class="size-8"></i>
-        </div>
-        <h5 class="font-heading text-lg font-bold text-dark mb-4">Pixel-Perfect Design</h5>
-        <p class="text-sm text-gray-500 leading-relaxed">Smart, user-focused IT designs tailored to streamline your digital presence.</p>
+    <!-- ========== SERVICES SECTION ========== -->
+    <div
+      id="services"
+      class="max-w-[85rem] px-4 py-16 sm:px-6 lg:px-8 lg:py-24 mx-auto bg-soft/50"
+    >
+      <div
+        class="max-w-2xl text-center mx-auto mb-10 lg:mb-16"
+        data-aos="fade-up"
+      >
+        <h2 class="text-3xl font-bold md:text-4xl text-dark">
+          Our Comprehensive Services
+        </h2>
+        <p class="mt-4 text-gray-600">
+          IT solutions designed to transform your operational infrastructure
+          from the ground up.
+        </p>
       </div>
 
-      <div class="bg-white rounded-md p-8 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] text-center startit-icon-box cursor-pointer group transition-all duration-300 md:mt-8">
-        <div class="icon-circle size-[72px] mx-auto rounded-full border-2 border-primary text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <i data-lucide="message-square" class="size-8"></i>
-        </div>
-        <h5 class="font-heading text-lg font-bold text-dark mb-4">Customer Support</h5>
-        <p class="text-sm text-gray-500 leading-relaxed">Ongoing technical support and robust infrastructure monitoring long after delivery.</p>
-      </div>
-
-      <div class="bg-white rounded-md p-8 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] text-center startit-icon-box cursor-pointer group transition-all duration-300">
-        <div class="icon-circle size-[72px] mx-auto rounded-full border-2 border-primary text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <i data-lucide="hard-drive" class="size-8"></i>
-        </div>
-        <h5 class="font-heading text-lg font-bold text-dark mb-4">Robust Infrastructure</h5>
-        <p class="text-sm text-gray-500 leading-relaxed">Deploying modern IT infrastructure to future-proof your business models.</p>
-      </div>
-
-      <div class="bg-white rounded-md p-8 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] text-center startit-icon-box cursor-pointer group transition-all duration-300 md:mt-8">
-        <div class="icon-circle size-[72px] mx-auto rounded-full border-2 border-primary text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <i data-lucide="folder-open" class="size-8"></i>
-        </div>
-        <h5 class="font-heading text-lg font-bold text-dark mb-4">Data Science</h5>
-        <p class="text-sm text-gray-500 leading-relaxed">Strategic IT-driven business plans harnessing the full potential of your data.</p>
-      </div>
-
-    </div>
-  </div>
-  <!-- ========== END FEATURES GRID ========== -->
-
-  <!-- ========== CREATE A BEAUTIFUL PRESENTATION (SPLIT LAYOUT) ========== -->
-  <div id="about" class="bg-white py-20 overflow-hidden">
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        
-        <div data-aos="fade-right">
-          <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-dark mb-6 leading-tight">
-            Create A Beautiful Presentation For The World To See
-          </h2>
-          <p class="text-lg text-gray-500 mb-8 leading-relaxed font-light">
-            ConServ is a customer-focused technology partner dedicated to integrating seamlessly with the digital ecosystem. We address complex business challenges while fostering long-term partnerships built on trust and collaboration.
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div
+          data-aos="fade-up"
+          data-aos-delay="100"
+          class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition duration-300"
+        >
+          <div
+            class="size-14 bg-soft text-primary rounded-xl flex justify-center items-center mb-5 group-hover:bg-brand-gradient group-hover:text-white transition"
+          >
+            <i data-lucide="code-2" class="size-7"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-dark mb-3">
+            Software House Solutions
+          </h3>
+          <p class="text-gray-500 mb-4">
+            Smart, user-focused IT designs tailored to streamline your specific
+            business processes.
           </p>
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-center gap-3 text-gray-600">
-              <i data-lucide="check-circle" class="size-5 text-primary"></i> Make a difference in your industry
-            </li>
-            <li class="flex items-center gap-3 text-gray-600">
-              <i data-lucide="check-circle" class="size-5 text-primary"></i> Unmatched computational power
-            </li>
-            <li class="flex items-center gap-3 text-gray-600">
-              <i data-lucide="check-circle" class="size-5 text-primary"></i> 50+ Satisfied enterprise clients
-            </li>
-          </ul>
-          <a href="#services" class="py-4 px-8 bg-primary hover:bg-secondary text-white font-heading font-bold uppercase tracking-wider text-sm rounded-sm transition inline-flex items-center gap-2">
-            View Solutions <i data-lucide="rocket" class="size-4"></i>
+          <a
+            class="mt-auto inline-flex items-center gap-x-1 text-sm font-semibold text-primary group-hover:text-secondary"
+            href="#"
+          >
+            Read more <i data-lucide="chevron-right" class="size-4"></i>
           </a>
         </div>
 
-        <div class="relative" data-aos="fade-left">
-          <!-- Abstract Graphic/Image imitating the Startit floating graphic -->
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" class="rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] w-full relative z-10" alt="Dashboard Analytics">
-          <div class="absolute -bottom-10 -left-10 w-full h-full bg-lightgray rounded-xl -z-10"></div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!-- ========== END PRESENTATION SECTION ========== -->
-
-  <!-- ========== PARALLAX BANNER ========== -->
-  <div class="relative py-32 bg-fixed bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072');">
-    <div class="absolute inset-0 bg-primary/90 mix-blend-multiply"></div>
-    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center" data-aos="zoom-in">
-      <h2 class="font-heading text-4xl md:text-[52px] font-extrabold text-white mb-6 leading-tight">
-        A Technology Partner Like No Other
-      </h2>
-      <p class="text-xl text-white/90 font-light mb-10 leading-relaxed">
-        We empower businesses with cutting-edge services and solutions that align with their operational and strategic objectives through collaboration and industry expertise.
-      </p>
-      <a href="#footer" class="py-4 px-10 bg-white text-primary hover:bg-gray-100 font-heading font-bold uppercase tracking-wider text-sm rounded-sm transition inline-block shadow-xl">
-        Get In Touch Today
-      </a>
-    </div>
-  </div>
-  <!-- ========== END PARALLAX BANNER ========== -->
-
-  <!-- ========== PROCESS: DESIGN IN YOUR IMAGE ========== -->
-  <div class="bg-white py-24">
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-        <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-dark mb-6">Design the Web in Your Image</h2>
-        <p class="text-lg text-gray-500 font-light">From initial sketches to final deployment, our structured integration process ensures every digital transformation project exceeds expectations.</p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative">
-        <!-- Connecting Line (Desktop) -->
-        <div class="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-[1px] bg-gray-200 -z-10"></div>
-
-        <!-- Step 1 -->
-        <div data-aos="fade-up" data-aos-delay="100" class="group">
-          <div class="size-24 mx-auto bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-400 group-hover:border-primary group-hover:text-primary group-hover:shadow-lg transition-all duration-300 mb-6 bg-white z-10 relative">
-            <i data-lucide="pen-tool" class="size-8"></i>
+        <div
+          data-aos="fade-up"
+          data-aos-delay="200"
+          class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition duration-300"
+        >
+          <div
+            class="size-14 bg-soft text-primary rounded-xl flex justify-center items-center mb-5 group-hover:bg-brand-gradient group-hover:text-white transition"
+          >
+            <i data-lucide="graduation-cap" class="size-7"></i>
           </div>
-          <h5 class="font-heading text-xl font-bold text-dark mb-3">Analysis</h5>
-          <p class="text-sm text-gray-500">Comprehensive risk management and business objective alignment.</p>
-        </div>
-
-        <!-- Step 2 -->
-        <div data-aos="fade-up" data-aos-delay="200" class="group">
-          <div class="size-24 mx-auto bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-400 group-hover:border-primary group-hover:text-primary group-hover:shadow-lg transition-all duration-300 mb-6 bg-white z-10 relative">
-            <i data-lucide="monitor" class="size-8"></i>
-          </div>
-          <h5 class="font-heading text-xl font-bold text-dark mb-3">Design</h5>
-          <p class="text-sm text-gray-500">Smart, user-focused IT designs tailored to streamline your processes.</p>
-        </div>
-
-        <!-- Step 3 -->
-        <div data-aos="fade-up" data-aos-delay="300" class="group">
-          <div class="size-24 mx-auto bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-400 group-hover:border-primary group-hover:text-primary group-hover:shadow-lg transition-all duration-300 mb-6 bg-white z-10 relative">
-            <i data-lucide="wrench" class="size-8"></i>
-          </div>
-          <h5 class="font-heading text-xl font-bold text-dark mb-3">Develop</h5>
-          <p class="text-sm text-gray-500">Deploying robust IT infrastructure to future-proof your models.</p>
-        </div>
-
-        <!-- Step 4 -->
-        <div data-aos="fade-up" data-aos-delay="400" class="group">
-          <div class="size-24 mx-auto bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-400 group-hover:border-primary group-hover:text-primary group-hover:shadow-lg transition-all duration-300 mb-6 bg-white z-10 relative">
-            <i data-lucide="settings" class="size-8"></i>
-          </div>
-          <h5 class="font-heading text-xl font-bold text-dark mb-3">Lifecycle</h5>
-          <p class="text-sm text-gray-500">Advanced firewall, network safeguards, and operational continuity.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ========== END PROCESS ========== -->
-
-  <!-- ========== OUR SOLUTIONS GRID ========== -->
-  <div id="services" class="bg-lightgray py-24 border-t border-gray-100">
-    <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-        <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-dark mb-6">Our Solutions</h2>
-        <p class="text-lg text-gray-500 font-light">Transform your operational infrastructure with our comprehensive suite of intelligent IT solutions.</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Solution 1 -->
-        <div data-aos="fade-up" data-aos-delay="100" class="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-          <div class="h-48 bg-[url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070')] bg-cover bg-center overflow-hidden">
-            <div class="w-full h-full bg-dark/40 group-hover:bg-primary/40 transition-colors duration-300"></div>
-          </div>
-          <div class="p-8">
-            <h5 class="font-heading text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">Software House Solutions</h5>
-            <p class="text-sm text-gray-500 mb-6 line-clamp-3">Smart, user-focused IT designs tailored to streamline your specific business processes and digital presence.</p>
-            <a href="#" class="font-heading text-sm font-bold text-dark uppercase tracking-wider border-b-2 border-primary pb-1 hover:text-primary transition-colors">Read More</a>
-          </div>
-        </div>
-
-        <!-- Solution 2 -->
-        <div data-aos="fade-up" data-aos-delay="200" class="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-          <div class="h-48 bg-[url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2064')] bg-cover bg-center overflow-hidden">
-            <div class="w-full h-full bg-dark/40 group-hover:bg-primary/40 transition-colors duration-300"></div>
-          </div>
-          <div class="p-8">
-            <h5 class="font-heading text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">Education Solutions</h5>
-            <p class="text-sm text-gray-500 mb-6 line-clamp-3">Data-driven analytic solutions that empower educational institutions with actionable insights.</p>
-            <a href="#" class="font-heading text-sm font-bold text-dark uppercase tracking-wider border-b-2 border-primary pb-1 hover:text-primary transition-colors">Read More</a>
-          </div>
-        </div>
-
-        <!-- Solution 3 -->
-        <div data-aos="fade-up" data-aos-delay="300" class="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-          <div class="h-48 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072')] bg-cover bg-center overflow-hidden">
-            <div class="w-full h-full bg-dark/40 group-hover:bg-primary/40 transition-colors duration-300"></div>
-          </div>
-          <div class="p-8">
-            <h5 class="font-heading text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">Integration Solutions</h5>
-            <p class="text-sm text-gray-500 mb-6 line-clamp-3">Comprehensive risk management and seamless integration across your entire digital platforms.</p>
-            <a href="#" class="font-heading text-sm font-bold text-dark uppercase tracking-wider border-b-2 border-primary pb-1 hover:text-primary transition-colors">Read More</a>
-          </div>
-        </div>
-
-        <!-- Solution 4 -->
-        <div data-aos="fade-up" data-aos-delay="400" class="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-          <div class="h-48 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070')] bg-cover bg-center overflow-hidden">
-            <div class="w-full h-full bg-dark/40 group-hover:bg-primary/40 transition-colors duration-300"></div>
-          </div>
-          <div class="p-8">
-            <h5 class="font-heading text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">Data Science Solutions</h5>
-            <p class="text-sm text-gray-500 mb-6 line-clamp-3">Strategic IT-driven business plans harnessing the full potential of your organizational data.</p>
-            <a href="#" class="font-heading text-sm font-bold text-dark uppercase tracking-wider border-b-2 border-primary pb-1 hover:text-primary transition-colors">Read More</a>
-          </div>
-        </div>
-
-        <!-- Solution 5 -->
-        <div data-aos="fade-up" data-aos-delay="500" class="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-          <div class="h-48 bg-[url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070')] bg-cover bg-center overflow-hidden">
-            <div class="w-full h-full bg-dark/40 group-hover:bg-primary/40 transition-colors duration-300"></div>
-          </div>
-          <div class="p-8">
-            <h5 class="font-heading text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">Digital Transformation</h5>
-            <p class="text-sm text-gray-500 mb-6 line-clamp-3">Deploying robust IT infrastructure to modernize and future-proof your business models.</p>
-            <a href="#" class="font-heading text-sm font-bold text-dark uppercase tracking-wider border-b-2 border-primary pb-1 hover:text-primary transition-colors">Read More</a>
-          </div>
-        </div>
-
-        <!-- Solution 6 -->
-        <div data-aos="fade-up" data-aos-delay="600" class="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-          <div class="h-48 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034')] bg-cover bg-center overflow-hidden">
-            <div class="w-full h-full bg-dark/40 group-hover:bg-primary/40 transition-colors duration-300"></div>
-          </div>
-          <div class="p-8">
-            <h5 class="font-heading text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">Service Lifecycle</h5>
-            <p class="text-sm text-gray-500 mb-6 line-clamp-3">Advanced firewall & network safeguards ensuring operational continuity from end to end.</p>
-            <a href="#" class="font-heading text-sm font-bold text-dark uppercase tracking-wider border-b-2 border-primary pb-1 hover:text-primary transition-colors">Read More</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!-- ========== END SOLUTIONS GRID ========== -->
-
-  <!-- ========== VENDORS & PARTNERS (IMAGE SLIDER) ========== -->
-  <div id="vendors" class="bg-white py-16 overflow-hidden border-t border-gray-200">
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-      <h2 class="font-heading text-3xl font-extrabold text-dark mb-2">Trusted by 50+ Global Vendors</h2>
-      <div class="w-16 h-1 bg-primary mx-auto"></div>
-    </div>
-    <div class="relative w-full flex overflow-hidden">
-      <!-- Gradient Masks -->
-      <div class="absolute inset-y-0 start-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-      <div class="absolute inset-y-0 end-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-      
-      <div class="animate-marquee flex items-center gap-16 px-8">
-        <!-- Set 1 (Grayscale on White) -->
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/logo-1.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/cropped-img_logo_site_Premium-Line.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/002-removebg-preview.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/008.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/001.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/018.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2022/06/veeam-logo-300x90.webp" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <!-- Set 2 -->
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/logo-1.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/cropped-img_logo_site_Premium-Line.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/002-removebg-preview.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/008.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/001.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2025/11/018.png" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-        <img src="https://conservmisr.com/wp-content/uploads/2022/06/veeam-logo-300x90.webp" class="h-12 object-contain grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100" alt="Vendor">
-      </div>
-    </div>
-  </div>
-  <!-- ========== END VENDORS ========== -->
-
-  <!-- ========== CALL TO ACTION (STARTIT STYLE FULL-WIDTH) ========== -->
-  <div class="bg-primary py-20 text-center">
-    <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto" data-aos="zoom-in">
-      <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-white mb-6">ConServ is filled with a variety of solutions, made especially for you.</h2>
-      <p class="text-white/90 text-lg mb-10 font-light max-w-3xl mx-auto">We believe in complementing the ecosystem with the highest standards of integrity. We collaborate, we don't compete.</p>
-      <a class="py-4 px-12 inline-flex justify-center items-center gap-x-3 text-sm font-heading font-bold uppercase tracking-wider rounded-sm bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-colors" href="#footer">
-        Check It Out Now <i data-lucide="arrow-right-circle" class="size-5"></i>
-      </a>
-    </div>
-  </div>
-  <!-- ========== END CALL TO ACTION ========== -->
-
-  <!-- ========== FOOTER (CLEAN LIGHT/DARK THEME) ========== -->
-  <footer id="footer" class="bg-dark pt-20 pb-10 border-t-4 border-primary">
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-        
-        <div class="lg:col-span-1">
-          <img src="./logo.png" alt="ConServ" class="h-10 mb-8 brightness-0 invert" onerror="this.outerHTML='<span class=\'font-heading text-2xl font-bold block mb-8 text-white\'>ConServ</span>'">
-          <p class="text-gray-400 text-sm leading-relaxed mb-8">
-            Established to be customer’s trusted technical advisor by providing the most adequate solutions, vendor agnostic and matching customers business objectives and technical outcomes.
+          <h3 class="text-xl font-semibold text-dark mb-3">
+            Education Solutions
+          </h3>
+          <p class="text-gray-500 mb-4">
+            Data-driven analytic solutions that empower educational institutions
+            with actionable insights.
           </p>
-          <div class="flex gap-3">
-            <a href="#" class="size-9 border border-gray-600 rounded-sm flex items-center justify-center text-gray-400 hover:bg-primary hover:border-primary hover:text-white transition"><svg class="size-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" /></svg></a>
-            <a href="#" class="size-9 border border-gray-600 rounded-sm flex items-center justify-center text-gray-400 hover:bg-primary hover:border-primary hover:text-white transition"><svg class="size-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a>
-            <a href="#" class="size-9 border border-gray-600 rounded-sm flex items-center justify-center text-gray-400 hover:bg-primary hover:border-primary hover:text-white transition"><svg class="size-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+          <a
+            class="mt-auto inline-flex items-center gap-x-1 text-sm font-semibold text-primary group-hover:text-secondary"
+            href="#"
+          >
+            Read more <i data-lucide="chevron-right" class="size-4"></i>
+          </a>
+        </div>
+
+        <div
+          data-aos="fade-up"
+          data-aos-delay="300"
+          class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition duration-300"
+        >
+          <div
+            class="size-14 bg-soft text-primary rounded-xl flex justify-center items-center mb-5 group-hover:bg-brand-gradient group-hover:text-white transition"
+          >
+            <i data-lucide="network" class="size-7"></i>
           </div>
+          <h3 class="text-xl font-semibold text-dark mb-3">
+            Integration Solutions
+          </h3>
+          <p class="text-gray-500 mb-4">
+            Comprehensive risk management and seamless integration across your
+            digital platforms.
+          </p>
+          <a
+            class="mt-auto inline-flex items-center gap-x-1 text-sm font-semibold text-primary group-hover:text-secondary"
+            href="#"
+          >
+            Read more <i data-lucide="chevron-right" class="size-4"></i>
+          </a>
         </div>
 
-        <div>
-          <h4 class="font-heading text-lg font-bold mb-6 text-white">Company</h4>
-          <ul class="space-y-3">
-            <li><a href="#" class="text-gray-400 hover:text-primary transition text-sm">Home</a></li>
-            <li><a href="#about" class="text-gray-400 hover:text-primary transition text-sm">About Us</a></li>
-            <li><a href="#vendors" class="text-gray-400 hover:text-primary transition text-sm">Vendors</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-primary transition text-sm">Careers</a></li>
-          </ul>
+        <div
+          data-aos="fade-up"
+          data-aos-delay="400"
+          class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition duration-300"
+        >
+          <div
+            class="size-14 bg-soft text-primary rounded-xl flex justify-center items-center mb-5 group-hover:bg-brand-gradient group-hover:text-white transition"
+          >
+            <i data-lucide="database" class="size-7"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-dark mb-3">
+            Data Science Solutions
+          </h3>
+          <p class="text-gray-500 mb-4">
+            Strategic IT-driven business plans harnessing the full potential of
+            your organizational data.
+          </p>
+          <a
+            class="mt-auto inline-flex items-center gap-x-1 text-sm font-semibold text-primary group-hover:text-secondary"
+            href="#"
+          >
+            Read more <i data-lucide="chevron-right" class="size-4"></i>
+          </a>
         </div>
 
-        <div>
-          <h4 class="font-heading text-lg font-bold mb-6 text-white">Solutions</h4>
-          <ul class="space-y-3">
-            <li><a href="#services" class="text-gray-400 hover:text-primary transition text-sm">Software House</a></li>
-            <li><a href="#services" class="text-gray-400 hover:text-primary transition text-sm">Education</a></li>
-            <li><a href="#services" class="text-gray-400 hover:text-primary transition text-sm">Integration</a></li>
-            <li><a href="#services" class="text-gray-400 hover:text-primary transition text-sm">Data Science</a></li>
-          </ul>
+        <div
+          data-aos="fade-up"
+          data-aos-delay="500"
+          class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition duration-300"
+        >
+          <div
+            class="size-14 bg-soft text-primary rounded-xl flex justify-center items-center mb-5 group-hover:bg-brand-gradient group-hover:text-white transition"
+          >
+            <i data-lucide="rocket" class="size-7"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-dark mb-3">
+            Digital Transformation
+          </h3>
+          <p class="text-gray-500 mb-4">
+            Deploying robust IT infrastructure to modernize and future-proof
+            your business models.
+          </p>
+          <a
+            class="mt-auto inline-flex items-center gap-x-1 text-sm font-semibold text-primary group-hover:text-secondary"
+            href="#"
+          >
+            Read more <i data-lucide="chevron-right" class="size-4"></i>
+          </a>
         </div>
 
-        <div>
-          <h4 class="font-heading text-lg font-bold mb-6 text-white">Contact Info</h4>
-          <ul class="space-y-4">
-            <li class="flex items-start gap-3 text-sm text-gray-400">
-              <i data-lucide="map-pin" class="size-5 shrink-0 text-primary mt-0.5"></i>
-              <span>Building 57, Hassan Aflaton Street, Golf Land, Heliopolis</span>
-            </li>
-            <li class="flex items-center gap-3 text-sm text-gray-400">
-              <i data-lucide="mail" class="size-5 shrink-0 text-primary"></i>
-              <a href="mailto:info@conservmisr.com" class="hover:text-primary transition">info@conservmisr.com</a>
-            </li>
-            <li class="flex items-center gap-3 text-sm text-gray-400">
-              <i data-lucide="phone" class="size-5 shrink-0 text-primary"></i>
-              <a href="tel:+0222903729" class="hover:text-primary transition">+0222903729</a>
-            </li>
-          </ul>
+        <div
+          data-aos="fade-up"
+          data-aos-delay="600"
+          class="group flex flex-col bg-white border border-gray-200 shadow-sm rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition duration-300"
+        >
+          <div
+            class="size-14 bg-soft text-primary rounded-xl flex justify-center items-center mb-5 group-hover:bg-brand-gradient group-hover:text-white transition"
+          >
+            <i data-lucide="shield" class="size-7"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-dark mb-3">
+            Service Lifecycle
+          </h3>
+          <p class="text-gray-500 mb-4">
+            Advanced firewall & network safeguards ensuring operational
+            continuity from end to end.
+          </p>
+          <a
+            class="mt-auto inline-flex items-center gap-x-1 text-sm font-semibold text-primary group-hover:text-secondary"
+            href="#"
+          >
+            Read more <i data-lucide="chevron-right" class="size-4"></i>
+          </a>
         </div>
-      </div>
-
-      <div class="pt-8 border-t border-gray-800 text-center">
-        <p class="text-sm text-gray-500">© 2026 ConServ Misr. All rights reserved.</p>
       </div>
     </div>
-  </footer>
-  <!-- ========== END FOOTER ========== -->
+    <!-- ========== END SERVICES ========== -->
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  
-  <script>
-    // 1. Navbar Scroll Effect (Transparent to Solid White)
-    window.addEventListener('scroll', function() {
-      const navbar = document.getElementById('navbar');
-      const logo = document.getElementById('nav-logo');
-      const links = document.querySelectorAll('.nav-link');
-      
-      if (window.scrollY > 50) {
-        navbar.classList.remove('bg-transparent', 'border-transparent', 'py-4');
-        navbar.classList.add('bg-white', 'border-gray-100', 'py-2', 'shadow-md');
-        
-        // Swap to default colored logo when background is white
-        logo.src = './logo_white.png';
-        
-        // Change link colors
-        links.forEach(link => {
-          link.classList.remove('text-white');
-          link.classList.add('text-dark');
-        });
-      } else {
-        navbar.classList.add('bg-transparent', 'border-transparent', 'py-4');
-        navbar.classList.remove('bg-white', 'border-gray-100', 'py-2', 'shadow-md');
-        
-        // Swap back to white logo for transparent background
-        logo.src = './logo.png';
-        
-        // Change link colors
-        links.forEach(link => {
-          link.classList.remove('text-dark');
-          link.classList.add('text-white');
-        });
-      }
-    });
+    <!-- ========== CALL TO ACTION ========== -->
+    <div class="bg-brand-gradient" data-aos="zoom-in">
+      <div
+        class="max-w-[85rem] px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto text-center"
+      >
+        <h2 class="text-3xl font-bold sm:text-4xl text-white mb-4">
+          Ready to Transform Your IT Infrastructure?
+        </h2>
+        <p class="max-w-2xl mx-auto text-lg text-white/90 mb-8">
+          Partner with ConServ Misr to address your complex business challenges
+          and drive sustainable growth through technology.
+        </p>
+        <a
+          class="py-4 px-8 inline-flex justify-center items-center gap-x-2 text-base font-bold rounded-lg border border-transparent bg-white text-primary hover:bg-gray-50 hover:scale-105 focus:outline-none transition-all shadow-xl"
+          href="#footer"
+        >
+          Request Integration Service
+          <i data-lucide="arrow-right" class="size-5"></i>
+        </a>
+      </div>
+    </div>
+    <!-- ========== END CALL TO ACTION ========== -->
 
-    // 2. Initialize Preloader & AOS
-    window.addEventListener('load', function() {
-      // Trigger initial scroll check for navbar
-      window.dispatchEvent(new Event('scroll'));
-      
-      const preloader = document.getElementById('preloader');
-      preloader.classList.add('fade-out');
-      setTimeout(() => {
-        preloader.style.display = 'none';
-        AOS.init({ duration: 800, once: true, offset: 50 });
-      }, 500);
-    });
+    <!-- ========== FOOTER ========== -->
+    <footer
+      id="footer"
+      class="bg-dark text-white py-12 border-t border-gray-800"
+      data-aos="fade-up"
+    >
+      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+        >
+          <div class="lg:col-span-1">
+            <img
+              src="./logo.png"
+              alt="ConServ"
+              class="h-10 mb-6"
+              onerror="this.outerHTML='<span class=\'text-2xl font-bold block mb-6\'>ConServ</span>'"
+            />
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Established to be customer’s trusted technical advisor by
+              providing the most adequate solutions, vendor agnostic and
+              matching customers business objectives and technical outcomes
+              through more expertise in MEA region.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-6 text-white">Company</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#vendors"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Vendors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#footer"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-6 text-white">Solutions</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Software House Solutions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Education Solutions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Integration Solutions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Data Science Solutions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Digital Transformation Solutions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-primary transition text-sm"
+                  >Service Lifecycle Solutions</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-6 text-white">Contact Info</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3 text-sm text-gray-400">
+                <i
+                  data-lucide="map-pin"
+                  class="size-5 shrink-0 text-primary mt-0.5"
+                ></i>
+                <span
+                  >Building 57, Hassan Aflaton Street, Golf Land,
+                  Heliopolis</span
+                >
+              </li>
+              <li class="flex items-center gap-3 text-sm text-gray-400">
+                <i data-lucide="mail" class="size-5 shrink-0 text-primary"></i>
+                <a
+                  href="mailto:info@conservmisr.com"
+                  class="hover:text-primary transition"
+                  >info@conservmisr.com</a
+                >
+              </li>
+              <li class="flex items-center gap-3 text-sm text-gray-400">
+                <i data-lucide="phone" class="size-5 shrink-0 text-primary"></i>
+                <a href="tel:+0222903729" class="hover:text-primary transition"
+                  >+0222903729</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="text-sm text-gray-500">
+            © 2026 ConServ Misr. All rights reserved.
+          </p>
+          <div class="flex gap-4">
+            <!-- LinkedIn -->
+            <a
+              href="#"
+              class="size-8 inline-flex justify-center items-center text-sm font-semibold rounded-full border border-gray-700 text-gray-400 hover:bg-gray-800 hover:text-white transition"
+              aria-label="LinkedIn"
+            >
+              <svg
+                class="size-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
 
-    // 3. Initialize Swiper Hero Slider
-    const swiper = new Swiper('.hero-swiper', {
-      effect: 'fade',
-      speed: 1000,
-      loop: true,
-      autoplay: {
-        delay: 8000, // Longer delay for video
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      parallax: true,
-    });
+            <!-- Twitter (X) -->
+            <a
+              href="#"
+              class="size-8 inline-flex justify-center items-center text-sm font-semibold rounded-full border border-gray-700 text-gray-400 hover:bg-gray-800 hover:text-white transition"
+              aria-label="Twitter"
+            >
+              <svg
+                class="size-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
 
-    // 4. Initialize Lucide Icons
-    lucide.createIcons();
-  </script>
-</body>
+            <!-- Facebook -->
+            <a
+              href="#"
+              class="size-8 inline-flex justify-center items-center text-sm font-semibold rounded-full border border-gray-700 text-gray-400 hover:bg-gray-800 hover:text-white transition"
+              aria-label="Facebook"
+            >
+              <svg
+                class="size-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ========== END FOOTER ========== -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize Preloader
+      window.addEventListener("load", function () {
+        const preloader = document.getElementById("preloader");
+        preloader.classList.add("fade-out");
+        setTimeout(() => {
+          preloader.style.display = "none";
+          // Initialize AOS only after preloader is gone to ensure animations trigger properly
+          AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: "ease-out-cubic",
+          });
+        }, 500);
+      });
+
+      // Initialize Lucide Icons
+      lucide.createIcons();
+    </script>
+  </body>
 </html>
